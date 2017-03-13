@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Esercizio 5</title>
+        <meta charset="UTF-8">
+        <script>
+           "use strict";
+           // inizializzazione con doppio apice
+           var testo = "ciao";
+           // inisializzazione con apice singolo (equivalentea sopra)
+           var testo2 = 'ciao';
+           
+           var testo3 = 'ciao "Classe"';
+           var testo4 = "ciao \"Classe\"";
+           
+           // concatenazione di stringhe con operatore +
+           var s1 = "web";
+           var s2 = "site";
+           var s = s1 + s2;
+           // uso operatore typeof su string
+           console.log(typeof s);
+           
+           var testo = "ieri pioveva\noggi c'e' il sole";
+           console.log(testo);
+           
+           // conversione automatica di stringhe
+           var s = '1';
+           s = 3 * s;
+           console.log(s);
+           console.log(typeof s);
+           var s = '1';
+           s = 3 + s;
+           console.log(s);
+           console.log(typeof s);
+           
+           console.log("5+3=" + 2 + 3);
+           
+           // ES6: String template literals
+           var log_level="DEBUG";
+           var log_message="TESTO del MESSAGGIO";
+           // 
+           console.log('livello log: ${log_level} - messaggio: ${log_message}');
+           console.log(`livello log: ${log_level} - messaggio: ${log_message}`);
+           // stessa cosa scritta in ES5
+           console.log("livello log: " + log_level + ' - messaggio: ' + log_message);
+           
+           // template string con funzione incorporata
+            var a = 10;
+            var b = 10;
+            console.log(`La somma è ${a + b} e la moltiplicazione è ${a * b}.`);
+        </script>
+    </head>
+    <body>
+        <h1>Esercizio 4 - Variabili String</h1>
+    </body>
+</html>

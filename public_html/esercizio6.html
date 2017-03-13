@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Esercizio 5</title>
+        <meta charset="UTF-8">
+        <script>
+           "use strict";
+           // [] e’ un array vuoto senza elementi
+            var vuoto = [];
+            // elemento undefined anche se array è vuoto
+            console.log(vuoto[0]);
+            // un array con quattro numeri
+            var numeri = [1, 2, 3, 4];
+            console.log(numeri.length);
+            // posso cambiare tipo senza problemi (perdendo array)
+            numeri = "";
+            console.log(numeri.length);
+            numeri = true;
+            console.log(numeri.length);
+            // torna array
+            numeri = [1, 2, 3, 4];
+            numeri[4] = 5;
+            numeri[20] = 20;
+            console.log("numeri="+numeri);
+            numeri[21] = "testo";
+            console.log("numeri="+numeri);
+            console.log(numeri); 
+            // aggiungo un elemento usando la funzione
+            // push dell'array
+            numeri.push("testo2");
+            console.log("numeri="+numeri);
+            console.log(numeri);
+            // cancello elemento indice 20
+            delete numeri[20];
+            console.log("numeri="+numeri);
+            
+            // array di array = matrice
+            var matrice = [[1,2,3],[4,5,6]];
+            console.log("elemento indice 0 della matrice=" + matrice[0]);
+            console.log("elemento indice 2 dell'array indice 0 della matrice=" + matrice[0][2]);
+            // usando string template
+            console.log(`valore elemento [0][2]=${matrice[0][2]}`);
+        </script>
+    </head>
+    <body>
+        <h1>Esercizio 6 - Array</h1>
+    </body>
+</html>

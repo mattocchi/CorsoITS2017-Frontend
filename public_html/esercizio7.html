@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Esercizio 7</title>
+        <meta charset="UTF-8">
+        <script>
+           "use strict";
+            var result = '', a = 3;
+            if (a > 2) {
+                result = 'a is greater than 2';
+            } else {
+                result = 'a is NOT greater than 2';
+            }
+            // conversione automatica da string a boolean per espressione if
+            if (result) {
+                // cosa succede?
+                // valuta la stringa convertita in boolean se true
+                // essendoci del testo vale true
+            }
+            // if compatto (ricalca il comportamento sopra
+            result = (a > 2) ? 'a is greater than 2' : 'a is NOT greater then 2';
+            
+            // verifica se esiste una variabile (somevar non esiste)
+            var result = "";
+            if (typeof somevar !== "undefined") {
+                result = "esiste";
+            } else {
+                result = "non esite";
+            }
+            console.log("variabile somevar=" + result);
+            
+            // STOP LEZIONE 3
+            /*
+            var count = 1;
+            while (count <= 10) {
+                    console.log(count);
+                    count++;
+            }
+
+            var primi = [2, 3, 5, 7, 11];
+            var count = 0;
+            while (count < primi.length) {
+                    console.log(primi[count]);
+                    count++;
+            }
+
+            for (var count = 1; count <= 10; count++) {
+                console.log(count);
+            }
+
+            var primi = [2, 3, 5, 7, 11];
+            for (var count = 0; count < primi.length; count++) {
+                console.log(primi[count]);
+            }
+
+            var primi = [2, 3, 5, 7, 11];
+            for (var indice in primi) {
+                console.log(primi[indice]);
+            }
+            */
+        </script>
+    </head>
+    <body>
+        <h1>Esercizio 7 - Condizioni e Cicli</h1>
+    </body>
+</html>

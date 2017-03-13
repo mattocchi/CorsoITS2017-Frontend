@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Esercizio 5</title>
+        <meta charset="UTF-8">
+        <script>
+           "use strict";
+           var a = true;
+           console.log(typeof a);
+           var b = !a;
+           console.log(typeof b);
+           console.log("b="+b);
+           // concatena come stringhe
+           console.log("1+true="+1+a);
+           // conversione in numerico
+           console.log(true+true);
+           console.log(1+true);
+           
+           var b = 1;
+           // doppia negazione
+           console.log(!!b);
+           
+           // conversione in string di un valore undefined
+           var pippo;
+           console.log("pippo="+pippo);
+           console.log(pippo+true); //NaN
+           
+           // ugualianza stretta 
+           // (non applica la conversione automatica dei tipi)
+           console.log("1" == 1);
+           console.log("1" === 1);
+           var numero = 1;
+           var booleana = true;
+           console.log("numero == booleana:" + (numero == booleana));
+           console.log("numero === booleana:" + (numero === booleana));
+        </script>
+    </head>
+    <body>
+        <h1>Esercizio 5 - Variabili Boolean, Operatori Logici ed Ugualianza Stretta</h1>
+    </body>
+</html>
