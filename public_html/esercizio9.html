@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Esercizio 9</title>
+        <meta charset="UTF-8">
+        <script>
+            "use strict";
+            function somma(a, b) {
+                return a + b;
+            }
+            function sommaSafe(a=0, b=0) {
+                return a + b;
+            }
+            var risultato = somma(1, 2);
+            console.log("risultato="+risultato);
+            risultato = somma(4, 5);
+            console.log("risultato="+risultato);
+            // chiamata senza secondo addendo
+            risultato = somma(10);
+            console.log("risultato somma(10)="+risultato);
+            
+            risultato = sommaSafe(10);
+            console.log("risultato sommaSafe(10)="+risultato);
+            
+            function scriviMessaggio(messaggio="nessun messaggio specificato") {
+                // verifico se oggetto console esiste
+                if (typeof console !== "undefined") {
+                    console.log("MESSAGGIO APP: " + messaggio);
+                }
+            }
+            scriviMessaggio("messaggio di prova");
+            scriviMessaggio();
+            
+            // definizione di anonymous functions (funzione come dato)
+            var x = function(a, b) {
+                return a - b;
+            };
+            risultato = x(5, 4);
+            console.log("invoco x()="+risultato);
+            console.log("typeof x=" + typeof x);
+        </script>
+    </head>
+    <body>
+        <h1>Esercizio 9 - Funzioni</h1>
+    </body>
+</html>

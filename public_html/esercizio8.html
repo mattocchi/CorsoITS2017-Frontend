@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Esercizio 8</title>
+        <meta charset="UTF-8">
+        <script>
+           "use strict"; 
+            // scriviamo in console con un ciclo while i numeri da 1 a 10
+            var conteggio = 1;
+            while (conteggio <= 10) {
+                console.log(conteggio);
+                conteggio++;
+            }
+             
+            // cicliamo con un while un array di numeri
+            var numeriPrimi = [2, 3, 5, 7, 11, 13, 17, 19, 23];
+            var indice = 0;
+            while (indice < numeriPrimi.length) {
+                    console.log(numeriPrimi[indice]);
+                    indice++;
+            }
+              
+             // ciclo while prcedente convertito in ciclo for
+             for (var indice = 0; indice < numeriPrimi.length; indice++) {
+                 console.log(numeriPrimi[indice]);
+             }
+            
+            // ciclo for/in
+            // NOTA: for/in con gli array usa l'indice, non l'elemento
+            console.log("test for/in");
+            for (var indice in numeriPrimi) {
+                console.log(numeriPrimi[indice]);
+            }
+            // USO DEL FOR/IN CON UNA STRING
+            var messaggio = "questa è una stringa generica";
+            console.log("USO DEL FOR/IN CON UNA STRING");
+            for (var indice in messaggio) {
+                console.log("messaggio["+indice+"]="+messaggio[indice]);
+            }
+    
+            // utilizziamo istruzione break per stampare solo i numeri primi ad una cifra
+            console.log("utilizziamo istruzione break per stampare solo i numeri primi ad una cifra");
+            // NOTA: dovrei ordinare l'array in ordine crescente
+            // prima per essere sicuro non siano disordinati
+            for (var indice = 0; indice < numeriPrimi.length; indice++) {
+                if (numeriPrimi[indice] < 10) {
+                    console.log(numeriPrimi[indice]);
+                } else {
+                    break;
+                }
+            }
+            
+            // utilizziamo istruzione continue per stampare solo i numeri primi a due cifre
+            console.log("utilizziamo istruzione continue per stampare solo i numeri primi a due cifre");
+            for (var indice in numeriPrimi) {
+                var numeroPrimo = numeriPrimi[indice];
+                // if in forma compatta senza é (solo una istruzione)
+                if (numeroPrimo < 10) 
+                    continue;
+                // non serve else questo viene eseguito solo se numero < 10
+                console.log(numeroPrimo);
+            }
+            
+            /*
+            // scriviamo in console con un ciclo while i numeri da 1 a 10
+            var contatore = 1;
+            while (contatore <= 10) {
+                    console.log(contatore);
+                    contatore++;
+            }
+            // cicliamo con un while un array di numeri
+            var numeriPrimi = [2, 3, 5, 7, 11, 13, 17, 19, 23];
+            var indice = 0;
+            while (indice < numeriPrimi.length) {
+                    console.log(numeriPrimi[indice]);
+                    indice++;
+            }
+            // utilizziamo ciclo for per stesso compito (utile tutti i casi in cui abbiamo un contatore)
+            for (var contatore = 1; contatore <= 10; contatore++) {
+                console.log(contatore);
+            }
+
+            // var primi = [2, 3, 5, 7, 11];
+            for (var indice = 0; indice < numeriPrimi.length; indice++) {
+                console.log(numeriPrimi[indice]);
+            }
+            // e se vogliamo scorrere al contrario l'array?
+
+            // utilizziamo il for/in
+            // var primi = [2, 3, 5, 7, 11];
+            for (var indice in numeriPrimi) {
+                console.log(numeriPrimi[indice]);
+            }
+            
+            console.log("utilizziamo istruzione break per stampare solo i numeri primi miniori di 10 (a solo una cifra)");
+            for (var indice in numeriPrimi) {
+                var numeroPrimo = numeriPrimi[indice];
+                if (numeroPrimo < 10) {
+                    console.log(numeroPrimo)
+                } else {
+                    break;
+                }
+            }
+            
+            console.log("utilizziamo istruzione break per stampare solo i numeri primi maggiori di 10 (a due cifre)");
+            for (var indice in numeriPrimi) {
+                var numeroPrimo = numeriPrimi[indice];
+                if (numeroPrimo >= 10) {
+                    console.log(numeroPrimo)
+                } else {
+                    break;
+                }                
+            }
+            */
+        </script>
+    </head>
+    <body>
+        <h1>Esercizio 8 - Cicli</h1>
+    </body>
+</html>
