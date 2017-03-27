@@ -8,36 +8,124 @@
             function somma(a, b) {
                 return a + b;
             }
-            function sommaSafe(a=0, b=0) {
+            function sommaSafe(a = 0, b = 0) {
                 return a + b;
             }
             var risultato = somma(1, 2);
-            console.log("risultato="+risultato);
+            console.log("risultato=" + risultato);
             risultato = somma(4, 5);
-            console.log("risultato="+risultato);
+            console.log("risultato=" + risultato);
             // chiamata senza secondo addendo
             risultato = somma(10);
-            console.log("risultato somma(10)="+risultato);
-            
+            console.log("risultato somma(10)=" + risultato);
+
             risultato = sommaSafe(10);
-            console.log("risultato sommaSafe(10)="+risultato);
-            
-            function scriviMessaggio(messaggio="nessun messaggio specificato") {
+            console.log("risultato sommaSafe(10)=" + risultato);
+
+            function scriviMessaggio(messaggio = "nessun messaggio specificato") {
                 // verifico se oggetto console esiste
                 if (typeof console !== "undefined") {
                     console.log("MESSAGGIO APP: " + messaggio);
-                }
+            }
             }
             scriviMessaggio("messaggio di prova");
             scriviMessaggio();
-            
+
             // definizione di anonymous functions (funzione come dato)
-            var x = function(a, b) {
+            var x = function (a, b) {
                 return a - b;
             };
             risultato = x(5, 4);
-            console.log("invoco x()="+risultato);
+            console.log("invoco x()=" + risultato);
             console.log("typeof x=" + typeof x);
+
+            // FINE LEZIONE 4
+
+            // utilizzo valore arguments
+            console.log("utilizzo valore arguments");
+            function sommaValori() {
+                // dichiaro le tre variabili
+                var i, res = 0, number_of_params = arguments.length;
+                // ciclo for da 0 a number_of_params
+                for (i = 0; i < number_of_params; i++) {
+                    // sommo a res
+                    res += arguments[i];
+                }
+                return res;
+            }
+            console.log(sommaValori());
+            console.log(sommaValori(1));
+            console.log(sommaValori("test"));
+            console.log(sommaValori(2, "test2"));
+            console.log(sommaValori(1, 2, 3, 4, 5, 6));
+
+            // esempio funzione callback
+            console.log("esempio funzione callback");
+            function moltiplicaPerDue(a, b, c, callback) {
+                var i, ar = [];
+                for (i = 0; i < 3; i++) {
+                    // moltiplica per 2 i primi tre
+                    // parametri passati alla funzione
+                    if (typeof callback === "function") {
+                        // se il parametro callback è una function la
+                        // invoco per trasformare il parametro
+                        ar[i] = callback(arguments[i]) * 2;
+                    } else {
+                        // il parametro callback non è una function
+                        // evito di richiamarla
+                        ar[i] = arguments[i] * 2;
+                    }
+                }
+                /*
+                 ar[0] = a *2;
+                 ar[1] = b*2;
+                 ar[2] = c*2;
+                 */
+                return ar;
+            }
+            var dati = moltiplicaPerDue(1, 2, 3, 4);
+            console.log(dati);
+            function aggiungiValore(x) {
+                return x + 10;
+            }
+            var dati = moltiplicaPerDue(1, 2, 3, aggiungiValore);
+            console.log(dati);
+
+            // uso delle funzioni anonime con funzioni  di callback
+            function applicaTrasformazione(x, funzioneDiTrasformazione) {
+                var res;
+                if (typeof funzioneDiTrasformazione === "function")
+                {
+                    res = funzioneDiTrasformazione(x);
+                } else {
+                    res = x;
+                }
+                return res;
+            }
+            var risultatoTrasformazione = applicaTrasformazione(2,
+                    function (a) {
+                        return a + 2;
+                    });
+            console.log(risultatoTrasformazione);
+            
+            risultatoTrasformazione = applicaTrasformazione(2,
+                    function (a) {
+                        return a * 2;
+                    });
+            console.log(risultatoTrasformazione);
+            
+            // self-invoking function
+            (function () {
+                    console.log("inizializzazione app");
+            })();
+            
+            // lambda functions (o arrow functions)
+            var risultatoTrasformazione = applicaTrasformazione(2, a => a + 2);
+            console.log(risultatoTrasformazione);
+            var risultatoTrasformazione = applicaTrasformazione(2,
+                    a => { return a * 2; }
+                    );
+            console.log(risultatoTrasformazione); 
         </script>
     </head>
     <body>
