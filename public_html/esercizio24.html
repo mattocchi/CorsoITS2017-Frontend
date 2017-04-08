@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Esercizio 24</title>
+        <meta charset="UTF-8">
+        <script>
+            'use strict';
+
+            var timout = 5000;
+            var cambiaIndirizzo = function () {
+                window.location = 'http://www.google.com';
+            }
+
+            /* da notare non come cambiaIndirizzo() */
+            setTimeout(cambiaIndirizzo, timout);
+
+        </script>
+    </head>
+    <body>
+        <h1>Esercizio 23 - interval</h1>
+        <p>sarete reindirzzati a google.com fra 5 secondi</p>
+    </body>
+</html>

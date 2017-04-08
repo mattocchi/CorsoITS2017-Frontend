@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Esercizio 12</title>
+        <meta charset="UTF-8">
+        <script>
+            "use strict";
+            const anno = 2017;
+            var stats = [0, 0, 0, 0, 0, 0, 0];
+            for (var mese = 1; mese <= 12; mese++) {
+                for (var giorno = 1; giorno <= 31   ; giorno++) {
+                    var d = new Date(anno, mese, giorno);
+                    if (d.getTime().isNaN) {
+                        console.log("data non valida: " + d);
+                    } else {
+                        stats[d.getDay()]++;
+                    }
+                }
+            }
+            console.log(stats);
+        </script>
+    </head>
+    <body>
+        <h1>Esercizio 12 - Date</h1>
+    </body>
+</html>
