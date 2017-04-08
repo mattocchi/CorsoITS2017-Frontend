@@ -16,11 +16,10 @@ funzioneX();
 console.log(globale);
 // console.log(locale); // non è definita
 
-
 // test block scope ES6
 console.log("test block scope");
 for (let i = 0; i < 10; i++) {
     console.log(i);
 }
+// i non è accessibile da questo punto
 console.log(i);
-
