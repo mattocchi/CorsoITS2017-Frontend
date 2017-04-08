@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Esercizio 11</title>
+        <meta charset="UTF-8">
+        <script>
+            "use strict";
+            var libro = {
+                argomento: "Programmazione",
+                pagine: 500,
+                sommario: [],
+                posizioneInBiblioteca: {}
+            };
+            console.log(libro);
+            // uso dell'operatore . per accedere alla proprietà argomento
+            console.log(libro.argomento);
+            // acceddere alle proprietà come array di "chiavi-valori"
+            console.log(libro["pagine"]);
+            // richiamo una proprietà dell'oggetto che non esiste
+            console.log("libro.autore=" + libro.autore);
+            
+           // aggiungiamo una proprietà all'oggetto libro
+           libro.autore = "Mark";
+           console.log("libro.autore=" + libro.autore);
+           libro["titolo"] = "Javascript";
+           
+           libro.sommario[0] = "Introduzione";
+           libro.sommario[1] = "Capitolo 1";
+           libro.sommario[2] = "Capitolo 2";
+           
+           var sommario1 = libro["sommario"][1];
+           console.log(sommario1);
+           
+           // assegnare due valori a posizioneInBiblioteca
+           // corridoio 2 scaffale 5
+           libro.posizioneInBiblioteca.corridoio = 2;
+           libro.posizioneInBiblioteca.scaffale = 5;
+           
+           var utente = {};
+           utente.nome = "Mario";
+           utente.cognome = "Rossi";
+           // e' un object
+           console.log(typeof utente);
+           console.log(utente.nome + " " + utente.cognome);
+           utente.nomeCompleto = function() {
+               return utente.nome + " " + utente.cognome;
+           };
+           console.log("nomeCompleto=" + utente.nomeCompleto());
+           
+           // riferimenti allo stesso oggetto
+           var utente2 = utente;
+           utente2.nome = "Roberto";
+           console.log("nomeCompleto di utente2="+utente2.nomeCompleto());
+           console.log("nomeCompleto di utente="+utente.nomeCompleto());
+           
+           // uso di una proprietà dell'oggetto con caatteri speciali
+           // NON CORRETTO: utente.codice-fiscale = "XXXYYY...";
+           utente["codice-fiscale"] = "XXXYYY...";
+           var utente3 = {
+               nome: "Stefano",
+               cognome: "Bianchi",
+               "codice-fiscale": "TTTAAABBB...0"
+           };
+           
+           // assegnazione della funzione
+           var nomeCompleto = utente.nomeCompleto;
+           // assegno il valore di ritorno dlla funzione invocata
+           var nomeCompletoUtente = utente.nomeCompleto();
+           
+           // funzioni costruttore
+            console.log("funzioni costruttore");
+            function Utente(a, b) {
+                // this riferito all'oggetto corrente
+                this.nome = a;
+                this.cognome = b;
+                this.nomeCompleto = function () {
+                    return this.nome + " " + this.cognome;
+                };
+            }
+            // se invocata con new
+            var utente4 = new Utente("Gianni", "Binotto");
+            console.log(utente4);
+            // se invocata così assegno il valore di ritorno che è undefined
+            // var utente5 = Utente("Pino");
+            // console.log(utente5);
+            // new memorizza internamente un riferimento 
+            // alla funzione invocata per la creazione
+            console.log(typeof utente4);
+            console.log(utente4 instanceof Utente);
+            var utente5 = new Utente("Pino");
+            console.log(typeof utente5);
+            
+            
+            console.log("utente4.nomeCompleto="+utente4.nomeCompleto());
+            console.log("utente5.nomeCompleto="+utente5.nomeCompleto());
+            
+            
+            // ESERCIZI ORIGINALI
+            
+var libro = {
+                titolo: "JavaScript",
+                argomento: "Programmazione",
+                pagine: 500,
+                descrivi: function () {
+                    return 'titolo: "' + this.titolo + '" - pagine: ' + this.pagine;
+                }
+            }
+
+            console.log(libro.descrivi());
+
+            // alterare metodi e proprità oggetti
+            var utente = {};
+            console.log(typeof utente.nome);
+
+            utente.nome = 'mario';
+            utente.cognome = 'rossi';
+            utente.nomeCompleto = function () {
+                return this.nome + " " + this.cognome;
+            };
+            console.log(utente.nomeCompleto());
+            delete utente.cognome;
+            console.log(utente.nomeCompleto());
+
+            // copia oggetto
+            var utente2 = utente;
+            utente2.nome = "stefano";
+            console.log(utente.nome);
+            console.log(utente2.nome);
+
+            // funzioni costruttore
+            console.log("funzioni costruttore");
+            function Utente(nome) {
+                this.nome = nome;
+            }
+            var u1 = new Utente('Mario');
+            console.log(u1.nome);
+
+            // var u2 = Utente('Leonardo'); // this in questo caso si riferisce all'oggetto globale
+            // console.log(typeof u2); // 
+            // console.log(window.nome);
+
+            console.log("u1 instanceof Utente");
+            console.log(u1 instanceof Utente);
+
+            console.log("u1 instanceof Object;");
+            console.log(u1 instanceof Object);
+
+            // Funzioni che ritornano oggetti
+            function creaUtente(nome) {
+                return {
+                    nome: nome
+                };
+            }
+            var u3 = creaUtente('Giacomo');
+            console.log("u3 instanceof Utente;");
+            console.log(u3 instanceof Utente);
+
+            // copia\passaggio di oggetti
+            var originale = {quantita: 1};
+            var copia = originale;
+            copia.quantita = 10;
+            console.log(copia.quantita);
+            console.log(originale.quantita);
+
+            // confronto di oggetti
+
+            // 
+            var obj = {
+                age: 25
+            }
+            console.log(Object.getOwnPropertyDescriptor(obj, 'age'));
+            Object.defineProperty(obj, 'age', {configurable: false});
+            console.log(Object.getOwnPropertyDescriptor(obj, 'age'));
+
+            // ES6 Object.assign e Object.is
+            let a = {age: 23, gender: "male"}
+            Object.assign(a, {age: 25})
+            // age sovrascritta, ma gender ignorata
+            console.log(a) // {"age":25, "gender":"male"}
+
+            console.log("Object.is(copia, originale)");
+            console.log(Object.is(copia, originale));
+
+            // ES6 Destructuring
+            let config = {
+                server: 'localhost',
+                port: '8080',
+                timeout: 900,
+            }
+            let {server, port} = config;
+            console.log(server, port) // "localhost" "8080"
+
+            const arr = ['a', 'b'];
+            const [x, y] = arr;
+            console.log (x, y) // "a" "b"
+            
+    
+        </script>
+    </head>
+    <body>
+        <h1>Esercizio 11 - Oggetti</h1>
+    </body>
+</html>
