@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            .sfondoGiallo {
+                background-color: yellow;
+            }
+
+
+        </style>
+
+        <script>
+            function cambiaColore(colore) {
+                var elementoParagrafo = document.getElementById("testo");
+                elementoParagrafo.style.border = "4px dotted " + colore;
+            }
+
+            function cambioRadio() {
+                console.log("radio selezionato");
+                // ciclo per tutti i radio presenti nella pagina
+                var elementiInput = document.getElementsByTagName("input");
+                for (var i = 0; i < elementiInput.length; i++) {
+                    // verifico se input e' un type=radio e del gruppo gruppoColore
+                    if (elementiInput[i].type == 'radio' && elementiInput[i].name == 'gruppoColore') {
+                        if (elementiInput[i].checked) {
+                            var coloreSelezionato = elementiInput[i].value;
+                            cambiaColore(coloreSelezionato);
+                        }
+                    }
+                }
+            }
+
+            function selezionaRadio(radioValue) {
+                // in questo caso utilizziamo la funzione js che ritorna tutti gli elementi con
+                // name=gruppoColore (tutti quelli di quel gruppo)
+                var elementiInput = document.getElementsByName("gruppoColore");
+                for (var i = 0; i < elementiInput.length; i++) {
+                    // sel il value dell'elemento corrente e' = al parametro passato
+                    // seleziono l'elemento e interrompo il ciclo
+                    if (elementiInput[i].value == radioValue) {
+                        elementiInput[i].checked = true;
+                        break;
+                    }
+                }
+                // uso la funzione che in base al radio selezionato applica il colore corretto
+                cambioRadio();
+            }
+        </script>
+    </head>
+    <body>
+        <div>Esercizio 6-9</div>
+        <p id="testo" style="border: 2px solid red;" class="sfondoGiallo">
+            Cascading Style Sheets (CSS) è uno standard per specificare la rappresentazione 
+            visiva di documenti HTML. CSS permette ad un designer di specificare con 
+            precisione i caratteri, i colori, i margini, rientro, 
+            i bordi e anche la posizione degli elementi del documento.
+        </p>
+        <input type="button" onclick="cambiaColore('black');" value="Esegui"/>
+        <br>
+        <input name="gruppoColore" type="radio" value="red" onchange="cambioRadio();" checked/>
+        <span onclick="selezionaRadio('red')">Rosso</span><br>
+        
+        <input name="gruppoColore" type="radio" value="green" onchange="cambioRadio();" />
+        <span onclick="selezionaRadio('green')">Verde</span><br>
+        
+        <input name="gruppoColore" type="radio" value="blue" onchange="cambioRadio();" />
+        <span onclick="selezionaRadio('blue')">Blu</span><br>
+        
+        <!--
+        
+        <label for="red">Rosso</label>
+        
+        <input id="red" name="gruppoColore" type="radio" value="red" onchange="cambioRadio();" checked/><label for="red">Rosso</label><br>
+        <input id="green" name="gruppoColore" type="radio" value="green" onchange="cambioRadio();" /><label for="green">Verde</label><br>
+        <input id="blue" name="gruppoColore" type="radio" value="blue" onchange="cambioRadio();" /><label for="blue">Blu</label><br>
+        -->
+    </body>
+</html>

@@ -8,15 +8,23 @@
             var my = document.getElementById('paragrafo1');
             console.log(my);
             // my.textContent = "contenuto modificato";
+            
+            // quale è il problema? di eseguire codice in questa fase?
+            // risolviamo con un "al termine del caricamento esegui"
+            
+            function funzioneRichiamataAlDocumentOnLoad() {
+            	console.log("funzioneRichiamataAlDocumentOnLoad");
+            	/*
+                var my = document.getElementById('paragrafo1');
+                console.log(my);
+                my.textContent = "contenuto modificato";
+                */
+            }
         </script>
     </head>
     <body>
+    <!-- <body onload="funzioneRichiamataAlDocumentOnLoad();"> -->
         <h1>Esercizio 26 - getElementById + textContent</h1>
         <p id="paragrafo1">contenuto iniziale</p>
-        <script>
-            var my = document.getElementById('paragrafo1');
-            console.log(my);
-            my.textContent = "contenuto modificato";
-        </script>
     </body>
 </html>
