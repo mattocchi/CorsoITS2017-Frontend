@@ -5,37 +5,27 @@
         <meta charset="UTF-8">
         <script>
             "use strict";
-            // 
-            const anno = 2017;
-            
-            // Assume not leap year by default (note zero index for Jan)
-            // var daysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-            
-            var stats = [0, 0, 0, 0, 0, 0, 0];
-            for (var mese = 0; mese <= 11; mese++) {
-                for (var giorno = 1; giorno <= 31; giorno++) {
-                    var d = new Date(anno, mese, giorno);
-                    // if (d.getTime().isNaN) {
-                    if (d.getDate() != giorno && d.getMonth() != mese) {
-                        console.log(`data non valida: ${anno}/${mese}/${giorno}` + " --> " + d);
-                    } else {
-                        console.log(d);
-                        stats[d.getDay()]++;
-                    }
-                }
+            let arr = ['a', 'b', 'c']
+            for (const index of arr.keys()) {
+                console.log(index) //0 1 2
             }
-            console.log(stats);
-            console.log("Anno " + anno);
-            console.log("Lunedì " + stats[0]);
-            console.log("Martedì " + stats[1]);
-            console.log("Mercoledì " + stats[2]);
-            console.log("Giovedì " + stats[3]);
-            console.log("Venerdì " + stats[4]);
-            console.log("Sabato " + stats[5]);
-            console.log("Domenica " + stats[6]);
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/values
+            /*
+            for (const value of arr.values()) {
+                console.log(value) //a b c
+            }
+            */
+            for (const [index, value] of arr.entries()) {
+                console.log(index, value)
+            }
+            
+            // filtro su array array
+            let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            console.log(numbers.find(n => n > 5)); //6
+            console.log(numbers.findIndex(n => n > 5)); //5
         </script>
     </head>
     <body>
-        <h1>Esercizio 12 - Date</h1>
+        <h1>Esercizio 12 - Array</h1>
     </body>
 </html>
