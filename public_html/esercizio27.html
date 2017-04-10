@@ -21,6 +21,7 @@ and open the template in the editor.
         <script>
             function cambiaColore(colore) {
                 var elementoParagrafo = document.getElementById("testo");
+                console.log(elementoParagrafo);
                 elementoParagrafo.style.border = "4px dotted " + colore;
             }
 
@@ -38,7 +39,8 @@ and open the template in the editor.
                     }
                 }
             }
-
+            
+            /*
             function selezionaRadio(radioValue) {
                 // in questo caso utilizziamo la funzione js che ritorna tutti gli elementi con
                 // name=gruppoColore (tutti quelli di quel gruppo)
@@ -54,6 +56,7 @@ and open the template in the editor.
                 // uso la funzione che in base al radio selezionato applica il colore corretto
                 cambioRadio();
             }
+            */
         </script>
     </head>
     <body>
@@ -67,13 +70,13 @@ and open the template in the editor.
         <input type="button" onclick="cambiaColore('black');" value="Esegui"/>
         <br>
         <input name="gruppoColore" type="radio" value="red" onchange="cambioRadio();" checked/>
-        <span onclick="selezionaRadio('red')">Rosso</span><br>
+        <span onclick="//selezionaRadio('red')">Rosso</span><br>
         
         <input name="gruppoColore" type="radio" value="green" onchange="cambioRadio();" />
-        <span onclick="selezionaRadio('green')">Verde</span><br>
+        <span onclick="//selezionaRadio('green')">Verde</span><br>
         
         <input name="gruppoColore" type="radio" value="blue" onchange="cambioRadio();" />
-        <span onclick="selezionaRadio('blue')">Blu</span><br>
+        <span onclick="//selezionaRadio('blue')">Blu</span><br>
         
         <!--
         
