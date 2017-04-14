@@ -91,8 +91,8 @@
             console.log(typeof utente5);
             
             
-            console.log("utente4.nomeCompleto="+utente4.nomeCompleto());
-            console.log("utente5.nomeCompleto="+utente5.nomeCompleto());
+            // console.log("utente4.nomeCompleto="+utente4.nomeCompleto());
+            // console.log("utente5.nomeCompleto="+utente5.nomeCompleto());
             
             
             // ESERCIZI ORIGINALI
@@ -155,46 +155,33 @@ var libro = {
             console.log("u3 instanceof Utente;");
             console.log(u3 instanceof Utente);
 
+            // utilizzo di propertyDescriptor
+            var obj = {
+                age: 25
+            };
+            console.log(Object.getOwnPropertyDescriptor(obj, 'age'));
+            Object.defineProperty(obj, 'age', {configurable: false});
+            console.log(Object.getOwnPropertyDescriptor(obj, 'age'));
+            
             // copia\passaggio di oggetti
             var originale = {quantita: 1};
             var copia = originale;
+            // copia è un riferimento allo stesso oggetto
             copia.quantita = 10;
             console.log(copia.quantita);
             console.log(originale.quantita);
 
             // confronto di oggetti
-
-            // 
-            var obj = {
-                age: 25
-            }
-            console.log(Object.getOwnPropertyDescriptor(obj, 'age'));
-            Object.defineProperty(obj, 'age', {configurable: false});
-            console.log(Object.getOwnPropertyDescriptor(obj, 'age'));
-
-            // ES6 Object.assign e Object.is
-            let a = {age: 23, gender: "male"}
-            Object.assign(a, {age: 25})
-            // age sovrascritta, ma gender ignorata
-            console.log(a) // {"age":25, "gender":"male"}
-
-            console.log("Object.is(copia, originale)");
-            console.log(Object.is(copia, originale));
-
-            // ES6 Destructuring
-            let config = {
-                server: 'localhost',
-                port: '8080',
-                timeout: 900,
-            }
-            let {server, port} = config;
-            console.log(server, port) // "localhost" "8080"
-
-            const arr = ['a', 'b'];
-            const [x, y] = arr;
-            console.log (x, y) // "a" "b"
+            console.log("copia == originale : " + (copia == originale));
+            console.log("copia === originale : " + (copia === originale));
             
-    
+            var copia2 = {};
+            // copia2 = originale;
+            Object.assign(copia2, originale);
+            console.log(copia2);
+            console.log("copia2 == originale : " + (copia2 == originale));
+            console.log("copia2 === originale : " + (copia2 === originale));
+            // console.log(Object.is(copia2, originale));
         </script>
     </head>
     <body>

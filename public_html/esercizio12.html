@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Esercizio 12</title>
+        <meta charset="UTF-8">
+        <script>
+            "use strict";
+            const anno = 2016;
+            // calcoliamo le ricorrenze nell'anno dei giorni della settimana
+            var stats = [0, 0, 0, 0, 0, 0, 0];
+            for (var mese = 0; mese <= 11; mese++) {
+                for (var giorno = 1; giorno <= 31; giorno++) {
+                    var d = new Date(anno, mese, giorno);
+                    //console.log(d);
+                    if (d.getDate() == giorno && d.getMonth() == mese) {
+                        // incrementare la statistica
+                        var giornoDellaSettimana = d.getDay(); // 0 = domenica
+                        stats[giornoDellaSettimana]++;
+                    } else {
+                        console.log(`data non valida ${anno}\\${mese}\\${giorno}` + " --> " + d);
+                    }
+                }
+            }
+            console.log(stats);
+            console.log("Anno " + anno);
+            console.log("Domenica " + stats[0]);
+            console.log("Lunedì " + stats[1]);
+            console.log("Martedì " + stats[2]);
+            console.log("Mercoledì " + stats[3]);
+            console.log("Giovedì " + stats[4]);
+            console.log("Venerdì " + stats[5]);
+            console.log("Sabato " + stats[6]);
+            
+            const indiceElemento = stats.findIndex(n => n > 52);
+            // 
+            console.log("giorno con + di 52 occorrenze=" + indiceElemento);
+            // stessa funzione callback scritta non in sintassi lambda
+            const indiceElemento2 = stats.findIndex(function (n) { return n > 52; });
+            console.log("giorno con + di 52 occorrenze=" + indiceElemento2);
+        </script>
+    </head>
+    <body>
+        <h1>Esercizio 12 - Date</h1>
+    </body>
+</html>
