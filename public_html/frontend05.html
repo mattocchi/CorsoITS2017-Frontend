@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frontend 05</title>
+        <meta charset="UTF-8">
+        <script>
+            "use strict";
+            var timer = 5000;
+            /* codice esempio didattico */
+             var miaFunzione = function() {
+             console.log("miaFunzione");
+             window.location.href = 'http://www.google.com';
+             };
+                /* da notare non come cambiaIndirizzo() */
+             setTimeout(miaFunzione, timer);
+             
+            
+            /*
+            setTimeout(function () {
+                console.log("miaFunzione");
+                window.location.href = 'http://www.google.com';
+            }, timer);
+            */
+            
+            var timeout = 5000;
+            // () => { ... } equivale a function() { ... }
+            setInterval(() => {
+                if (timeout === 0) {
+                        console.log("tempo scaduto");
+                        window.location.href = 'http://www.google.com';
+                    } else {
+                        timeout = timeout - 1000;
+                        console.log(timeout);
+                    }
+                }, 1000);          
+        </script>
+    </head>
+    <body>
+        <h1>Frontend 05 - intervals</h1>
+
+    </body>
+</html>

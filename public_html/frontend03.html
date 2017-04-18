@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frontend 03</title>
+        <meta charset="UTF-8">
+        <script>
+            "use strict";
+            console.log(window.frames);
+            console.log("window.frames.length=" + window.frames.length);
+        </script>
+    </head>
+    <body>
+        <h1>Frontend 03 - frames</h1>
+        <iframe name="mioframe" src="index.html"></iframe>
+        <script>
+            console.log(window.frames);
+            console.log("window.frames.length=" + window.frames.length);
+            // violazione same-origin-policy
+            // window.frames[0].window.location.href = "http://www.google.com";
+            // plocy non violata
+            window.frames[0].window.location.href = "frontend01.html";
+        </script>        
+    </body>
+</html>

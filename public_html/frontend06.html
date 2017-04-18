@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frontend 06</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Frontend 06 - DOM</h1>
+        <p class="opener">primo paragrago</p>
+        <p><i>secondo</i> paragrafo</p>
+        <p id="paragrafofinale">testo piè di pagina</p>
+        <!-- commento a fine pagina -->
+        <script>
+            "use strict";
+            var numeroNodi = document.documentElement.childNodes.length;
+            console.log("numeroNodi"+numeroNodi);
+            console.log(document.documentElement.childNodes);
+            var body = document.documentElement.childNodes[2];
+            console.log(body.childNodes.length);
+            console.log(""+body.childNodes);
+            console.log(body.childNodes);
+
+            // attributi di elemento indice 3 di body
+            console.log(body.childNodes[3].hasAttributes());
+            console.log(body.childNodes[3].attributes);
+            console.log(body.childNodes[3].attributes[0].nodeName);
+            console.log(body.childNodes[3].attributes[0].nodeValue);    
+        </script>
+    </body>
+</html>

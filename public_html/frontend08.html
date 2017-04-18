@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Frontend 08</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            .sfondoGiallo {
+                background-color: yellow;
+            }
+        </style>
+
+        <script>
+            function impostaColoreBordo(nomeTema) {
+                console.log("impostaColoreBordo: "+nomeTema);
+                var elementoParagrafo = document.getElementById("testo");
+                var stileBordo = '';
+                // determino uno stile grafico in funzione del nome del tema
+                switch (nomeTema) {
+                    case 'tema1':
+                        stileBordo = '1px dotted cyan';
+                        break;
+                    case 'tema2':
+                        stileBordo = '2px dotted red';
+                        break;
+                    case 'tema3':
+                        stileBordo = '3px dotted green';
+                        break;
+                    case 'tema4':
+                        stileBordo = '4px dotted blue';
+                        break;
+                    default:
+                        stileBordo = '1px solid black';
+                        break;                        
+                }
+                elementoParagrafo.style.border = stileBordo;
+            }
+            
+            function gestisciCambioRadio() {
+                console.log("radio selezionato");
+                var elementiInput = document.getElementsByTagName("input");
+                // piccola ottimizzazione sarebbe interrogare il DOM con gli elementi con un certo NAME
+                // var elementiInput = document.getElementsByName("gruppoColore");
+                // cicliamo per tutti gli elementi input della pagina
+                for (var i = 0; i < elementiInput.length; i++) {
+                    // verifico se input e' un type=radio e del gruppo gruppoColore
+                    if (elementiInput[i].type === 'radio' && elementiInput[i].name === 'gruppoColore') {
+                        if (elementiInput[i].checked) {
+                            console.log(elementiInput[i]);
+                            // value dell'elemento selezionato
+                            var temaSelezionato = elementiInput[i].value;
+                            // invoco la funzione predcedentemente definita
+                            impostaColoreBordo(temaSelezionato);
+                        }
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div>Frontend 08 - cambio colore con eventi html</div>
+        
+        <p id="testo" style="border: 1px solid black;" class="sfondoGiallo">
+            Cascading Style Sheets (CSS) è uno standard per specificare la rappresentazione 
+            visiva di documenti HTML. CSS permette ad un designer di specificare con 
+            precisione i caratteri, i colori, i margini, rientro, 
+            i bordi e anche la posizione degli elementi del documento.
+        </p>
+        
+        <input type="button" onclick="impostaColoreBordo();" value="Imposta Stile Predefinito"/>
+        
+        <br>
+        <input name="gruppoColore" type="radio" value="tema1" onchange="gestisciCambioRadio();" />
+        <span>Seleziona Stile 1</span><br>
+        
+        <input name="gruppoColore" type="radio" value="tema2" onchange="gestisciCambioRadio();" />
+        <span>Seleziona Stile 2</span><br>
+        
+        <input name="gruppoColore" type="radio" value="tema3" onchange="gestisciCambioRadio();" />
+        <span>Seleziona Stile 3</span><br>
+
+        <input name="gruppoColore" type="radio" value="tema4" onchange="gestisciCambioRadio();" />
+        <span>Seleziona Stile 4</span><br>        
+    </body>
+</html>

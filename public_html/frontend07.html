@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frontend 07</title>
+        <meta charset="UTF-8">
+        <script type="text/javascript">
+            'use strict';
+            function fineCaricamento() {
+                console.log("fineCaricamento");
+                var paragrafo = document.getElementById('paragrafo1');
+                console.log(paragrafo);
+                // modifico textContent
+                paragrafo.textContent = "contenuto modificato";
+                
+                // aggancio una funzione anonima JS 
+                // all'evento onclick dell'oggetto paragrafo (HTMLElement del DOM)
+                paragrafo.onclick = function() {
+                    alert(paragrafo.textContent);
+                };
+            }
+        </script>
+    </head>
+    <!-- invoco funzione JS all'evento onload via attributo HTML -->
+    <body onload="fineCaricamento();">
+        <h1>Frontend 07 - getElementById + textContent + event</h1>
+        <p id="paragrafo1">contenuto iniziale</p>
+    </body>
+</html>
