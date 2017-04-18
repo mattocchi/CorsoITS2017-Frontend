@@ -1,0 +1,9 @@
+#intestazione {
+    background-color: gainsboro;   
+}
+
+.stile-completato {
+    text-decoration: line-through;
+    background: #888;
+    color: #fff;
+}
