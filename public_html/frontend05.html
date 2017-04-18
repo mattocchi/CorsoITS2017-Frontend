@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Esercizio 24</title>
+        <title>Frontend 05</title>
         <meta charset="UTF-8">
         <script>
             'use strict';
@@ -11,13 +11,19 @@
                 window.location = 'http://www.google.com';
             }
 
-            /* da notare non come cambiaIndirizzo() */
-            setTimeout(cambiaIndirizzo, timout);
-
+            setTimeout(() => {
+				if (timout === 0) {
+		            /* da notare non come cambiaIndirizzo() */
+		            setTimeout(cambiaIndirizzo, timout);					
+				} else {
+					timout = timout - 1000;
+				}
+			}, 1000);
+            
         </script>
     </head>
     <body>
-        <h1>Esercizio 23 - interval</h1>
+        <h1>Frontend 05 - interval</h1>
         <p>sarete reindirzzati a google.com fra 5 secondi</p>
     </body>
 </html>

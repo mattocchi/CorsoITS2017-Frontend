@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Frontend 08</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -14,18 +14,36 @@ and open the template in the editor.
             .sfondoGiallo {
                 background-color: yellow;
             }
-
-
         </style>
 
         <script>
-            function cambiaColore(colore) {
+            function impostaColoreBordo(nomeTema) {
+                console.log("impostaColoreBordo: " + nomeTema);
+                
+                var stileBordo = '';
+                switch (nomeTema) {
+                    case 'tema1':
+                        stileBordo = '1px dotted cyan';
+                        break;
+                    case 'tema2':
+                        stileBordo = '2px dotted red';
+                        break;
+                    case 'tema3':
+                        stileBordo = '3px dotted green';
+                        break;
+                    case 'tema4':
+                        stileBordo = '4px dotted blue';
+                        break;
+                    default:
+                        stileBordo = '1px solid black';
+                        break;
+                }
+                // var nuovoStile = "4px dotted " + cssColor;
                 var elementoParagrafo = document.getElementById("testo");
-                console.log(elementoParagrafo);
-                elementoParagrafo.style.border = "4px dotted " + colore;
+                elementoParagrafo.style.border = stileBordo;
             }
 
-            function cambioRadio() {
+            function gestisciCambioRadio() {
                 console.log("radio selezionato");
                 // ciclo per tutti i radio presenti nella pagina
                 var elementiInput = document.getElementsByTagName("input");
@@ -33,11 +51,14 @@ and open the template in the editor.
                     // verifico se input e' un type=radio e del gruppo gruppoColore
                     if (elementiInput[i].type == 'radio' && elementiInput[i].name == 'gruppoColore') {
                         if (elementiInput[i].checked) {
-                            var coloreSelezionato = elementiInput[i].value;
-                            cambiaColore(coloreSelezionato);
+                            console.log(elementiInput[i]);
+                            var temaSelezionato = elementiInput[i].value;
+                            impostaColoreBordo(temaSelezionato);
                         }
                     }
                 }
+                
+                // VERSIONE OTTIMIZZATA NON TUTTI GLI INPUT
             }
             
             /*
@@ -60,23 +81,29 @@ and open the template in the editor.
         </script>
     </head>
     <body>
-        <div>Esercizio 6-9</div>
-        <p id="testo" style="border: 2px solid red;" class="sfondoGiallo">
+        <div>Frontend 08 - cambio colore con eventi html</div>
+        
+        <p id="testo" style="border: 1px solid black;" class="sfondoGiallo">
             Cascading Style Sheets (CSS) è uno standard per specificare la rappresentazione 
             visiva di documenti HTML. CSS permette ad un designer di specificare con 
             precisione i caratteri, i colori, i margini, rientro, 
             i bordi e anche la posizione degli elementi del documento.
         </p>
-        <input type="button" onclick="cambiaColore('black');" value="Esegui"/>
+        
+        <input type="button" onclick="impostaColoreBordo();" value="Imposta Stile Predefinito"/>
+        
         <br>
-        <input name="gruppoColore" type="radio" value="red" onchange="cambioRadio();" checked/>
-        <span onclick="//selezionaRadio('red')">Rosso</span><br>
+        <input name="gruppoColore" type="radio" value="tema1" onchange="gestisciCambioRadio();" />
+        <span onclick="//selezionaRadio('red')">Seleziona Stile 1</span><br>
         
-        <input name="gruppoColore" type="radio" value="green" onchange="cambioRadio();" />
-        <span onclick="//selezionaRadio('green')">Verde</span><br>
+        <input name="gruppoColore" type="radio" value="tema2" onchange="gestisciCambioRadio();" />
+        <span onclick="//selezionaRadio('green')">Seleziona Stile 2</span><br>
         
-        <input name="gruppoColore" type="radio" value="blue" onchange="cambioRadio();" />
-        <span onclick="//selezionaRadio('blue')">Blu</span><br>
+        <input name="gruppoColore" type="radio" value="tema3" onchange="gestisciCambioRadio();" />
+        <span onclick="//selezionaRadio('blue')">Seleziona Stile 3</span><br>
+
+        <input name="gruppoColore" type="radio" value="tema4" onchange="gestisciCambioRadio();" />
+        <span onclick="//selezionaRadio('blue')">Seleziona Stile 4</span><br>
         
         <!--
         
