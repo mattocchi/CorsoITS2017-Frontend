@@ -14,10 +14,35 @@ and open the template in the editor.
                 // JS STANDARD
                 // Sintassi formale
                 jQuery(document).ready(function () {
-                   
+                // selettori principali
+                var numP = $("p").length;
+                console.log("nel documento ci sono " + numP + " paragrafi.");
+
+                var testoParagrafo2 = $("#paragrafo2").text(); // non innerText
+                console.log("il testo paragrafo con id paragrafo2 e': " + testoParagrafo2);
+
+                var numBordoRosso = $(".bordoRosso").length;
+                console.log("nel documento ci sono " + numBordoRosso + " elementi con class=bordoRosso");
+
+                var numH1 = $("h1").length;
+                console.log("nel documento ci sono " + numH1 + " elementi H1");
+                
+                // selettori combinati
+                var numPBordoVerde = $("p.bordoVerde").length;
+                console.log("nel documento ci sono " + numPBordoVerde + " elementi P con class bordoVerde");
+                
+                var numPeH1 = $("p, h1").length;
+                console.log("nel documento ci sono " + numPeH1 + " elementi P e H1");
+                
+                // selettori basati su struttura
+                var numPdiscendenti = $("body p").length;
+                console.log("nel documento ci sono " + numPdiscendenti + " elementi P discendenti da body");
+
+                var numPfigli = $("body > p").length;
+                console.log("nel documento ci sono " + numPfigli + " elementi P figli di body");                   
                 });
         </script>
-		<style>
+        <style>
             .bordoRosso {
                 border: 1px solid red;
             }
