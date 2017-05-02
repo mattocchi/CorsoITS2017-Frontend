@@ -11,9 +11,9 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script>
-                // JS STANDARD
-                // Sintassi formale
-                jQuery(document).ready(function () {
+            // JS STANDARD
+            // Sintassi formale
+            jQuery(document).ready(function () {
                 // selettori principali
                 var numP = $("p").length;
                 console.log("nel documento ci sono " + numP + " paragrafi.");
@@ -26,21 +26,35 @@ and open the template in the editor.
 
                 var numH1 = $("h1").length;
                 console.log("nel documento ci sono " + numH1 + " elementi H1");
-                
+
                 // selettori combinati
                 var numPBordoVerde = $("p.bordoVerde").length;
                 console.log("nel documento ci sono " + numPBordoVerde + " elementi P con class bordoVerde");
-                
+
                 var numPeH1 = $("p, h1").length;
                 console.log("nel documento ci sono " + numPeH1 + " elementi P e H1");
-                
+
                 // selettori basati su struttura
                 var numPdiscendenti = $("body p").length;
                 console.log("nel documento ci sono " + numPdiscendenti + " elementi P discendenti da body");
 
                 var numPfigli = $("body > p").length;
-                console.log("nel documento ci sono " + numPfigli + " elementi P figli di body");                   
+                console.log("nel documento ci sono " + numPfigli + " elementi P figli di body");
+                
+                // assegna un numero ai paragrafi del documento fino a quello con id=ultimo
+                $("p").each(function (indice, elemento) {
+                    // elemento e' l'oggetto element del DOM
+                    console.log("elemento:");
+                    console.log(elemento);
+                    // $(elemento) ritorna l'Oggetto jQuery
+                    console.log("$(elemento):");
+                    console.log($(elemento));
+                    if (elemento.id === "paragrafo4") {
+                        return false;
+                    }
+                    $(elemento).prepend(indice + ": ");
                 });
+            });
         </script>
         <style>
             .bordoRosso {
@@ -54,7 +68,7 @@ and open the template in the editor.
     </head>
     <body>
         <div>jQuery Selettori</div>
-        
+
         <div class="bordoVerde">
             <p>paragrafo dentro div</p>
         </div>
@@ -69,6 +83,6 @@ and open the template in the editor.
         <p class="bordoVerde">paragrafo con testo cinque</p>
         <p class="bordoRosso">paragrafo con testo sei</p>
         <p class="">paragrafo con testo sette</p>
-              
+
     </body>
 </html>

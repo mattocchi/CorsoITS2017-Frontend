@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>jQuery -  Mini Chat</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script>
+            // jQuery(document).ready(function () {
+            $(function() {
+                // change avviene solo quando perde focus
+                $("#messaggio").change(function () {
+                    console.log("messaggio.change");
+                });
+                // keyup della teext area
+                $("#messaggio").keyup(function () {
+                    console.log("messaggio.keyup");
+                    var testo = $("#messaggio").val();
+                    $("#numChar").text(testo.length);
+                    if (testo.length > 140) {
+                        $("#numChar").addClass("limiteSuperato");
+                    } else {
+                        $("#numChar").removeClass("limiteSuperato");
+                    }
+                });
+                // click del pusante invia
+                $("#btnInvia").click(function() {
+                    var testo = $("#messaggio").val();
+                    $("<li>").text(testo).appendTo("#chat");
+                    $("#messaggio").val("");
+                });
+            });
+        </script>
+        <style>
+            .limiteSuperato {
+                color: red;
+                font-weight: bold;
+            }
+        </style>        
+    </head>
+    <body>
+        <div>jQuery -  Mini Chat</div>
+        <hr/>
+        <textarea id="messaggio"></textarea>
+        <p>Num. Caratteri digitati: <span id="numChar"></span></p>
+        <button id="btnInvia">Invia</button>
+        <hr/>
+        <ul id="chat"></ul>
+    </body>
+</html>

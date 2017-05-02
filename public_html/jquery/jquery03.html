@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>jQuery</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script>
+            // jQuery(document).ready(function () {
+            $(function() {
+                $("#btn1").click(function () {
+                    $(".sfondoRosso").toggleClass('sfondoGiallo');
+                });
+                
+                $("#btn2").click(function () {
+                    // leggo il value del radio selezionato
+                    var coloreSelezionato = $("input[name=colore]:checked").val();
+                    console.log(coloreSelezionato);
+                    // $(".sfondoRosso").css("background-color", coloreSelezionato);
+                    $(".sfondoRosso").css({
+                        "background-color": coloreSelezionato,
+                        "border": "1px solid green"
+                    });
+                    // assegno un value all'input text
+                    $("#stileSelezionato").val(coloreSelezionato);
+                });
+            });
+        </script>
+        <style>
+            .sfondoRosso {
+                background-color: red;
+            }
+            .sfondoGiallo {
+                background-color: yellow;
+            }
+        </style>        
+    </head>
+    <body>
+        <div>jQuery</div>
+        <p class="sfondoRosso">testo su sfondo rosso</p>
+        <p class="sfondoRosso">test due</p>
+        <input id="btn1" type="button" value="Cambio" />
+        
+        <input type="radio" name="colore" value="red" checked> Rosso<br>
+        <input type="radio" name="colore" value="blue" > Blu<br>
+        <input type="radio" name="colore" value="yellow" > Giallo<br>
+        <input id="btn2" type="button" value="Cambio da selezione" />
+        <input id="stileSelezionato" type="text" value="" />
+    </body>
+</html>

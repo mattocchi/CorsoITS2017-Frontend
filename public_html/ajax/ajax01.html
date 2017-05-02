@@ -12,10 +12,19 @@ and open the template in the editor.
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script>
             jQuery(document).ready(function () {
+                $("#selectProdotti").load("catalogo.txt");
+                
                 // $("#selectProdotti").change(() => { ... });
                 $("#selectProdotti").change(function () {
                     var prodottoSelezionato = $("#selectProdotti").val();
                     console.log(prodottoSelezionato);
+                    // equivale a prodottoSelezionato != ""
+                    if (prodottoSelezionato) {
+                        var nomeTemplate = prodottoSelezionato + ".html";
+                        $("#dettaglioProdotto").load(nomeTemplate);
+                    } else {
+                        $("#dettaglioProdotto").html("");
+                    }
                 });
             });
         </script>
@@ -24,10 +33,6 @@ and open the template in the editor.
         <div>Ajax Load</div>
         <h1>Segli un Prodotto</h1>
         <select id="selectProdotti" name="selectProdotti">
-            <option value="">Scegli un prodotto...</option>
-            <option value="PRODOTTO_A">Scarpone Alto</option>
-            <option value="PRODOTTO_B">Scarpone Basso</option>
-            <option value="PRODOTTO_C">Scarpone Alto Impermeabile</option>
         </select>
         <div id="dettaglioProdotto"></div>
     </body>
