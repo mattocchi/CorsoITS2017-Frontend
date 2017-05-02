@@ -1,0 +1,14 @@
+[
+	{
+		"descrizione": "promemoria uno",
+		"completato": false
+	},
+	{
+		"descrizione": "promemoria due",
+		"completato": true
+	},
+	{
+		"descrizione": "promemoria tre",
+		"completato": false
+	}
+]

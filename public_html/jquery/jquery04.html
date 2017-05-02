@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>
+            // Sintassi formale
+            jQuery(document).ready(function () {
+                $("#messaggio").keyup(function () {
+                    console.log("change");
+                    var testo = $("#messaggio").val();
+                    console.log("testo=" + testo);
+                    $("#numChar").text(testo.length);
+                })
+
+                $("#btnInvia").click(function () {
+                    var message = $("#messaggio").val();
+                    // creo un nuovo <li> ed ne valorizzo il testo
+                    var nuovoLI = $("<li>").text(message);
+                    $("#chat").append(nuovoLI);
+                    $("#messaggio").val("");
+                });
+                
+                /*
+                 $("#messaggio").change(function () {
+                 console.log("change");
+                 if ($("#messaggio").val().length > 0) {
+                 $("#btnAggiungi").removeAttr("disabled");
+                 } else {
+                 $("#btnAggiungi").attr("disabled","disabled");    
+                 }
+                 });
+                 */
+            });
+        </script>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <div>Corso ITS - jQuery Chat</div>
+
+        <ul id="chat" class="chatStyle"></ul>
+        <!--<input id="messaggio" type="text" />-->
+
+        <textarea id="messaggio"></textarea>
+        <p>Num. Caratteratteri digitati: <span id="numChar"></span></p>
+
+        <input id="btnInvia" type="button" value="Invia" />
+    </body>
+</html>

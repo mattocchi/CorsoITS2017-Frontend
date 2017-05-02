@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>
+            jQuery(function () {
+                $('#selectProdotti').load('jquery05/opzioni.txt');
+                
+                $('#selectProdotti').change(function (event) {
+                   var targetEvento = $(event.target);
+                   console.log("il valore selezionato è cambiato:" + targetEvento.val());
+                   // codice per caricare la pagina html del prodotto selezionato
+                   $('#pannelloDettaglioProdotto').load("jquery05/" + targetEvento.val() + ".html");
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div>Corso ITS - Ajax Load</div>
+
+        <div id="banner">
+            <img src="../images/logo.png" alt="Logo Azienda"/>
+        </div>
+        
+        <div id="contenutoPagina">
+            
+            <h1>Segli un Prodotto</h1>
+
+            <div>
+                <div id="pannelloSelezione">
+                    <label for="selectProdotti">Prodotti Disponibili:</label>&nbsp;
+                    <select id="selectProdotti" name="selectProdotti">
+                    </select>
+                </div>
+                
+                <hr/>
+                
+                <div id="pannelloDettaglioProdotto"></div>
+            </div>
+            
+        </div>
+
+    </body>
+</html>

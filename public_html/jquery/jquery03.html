@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>
+            // Sintassi formale
+            jQuery(document).ready(function () {
+                $("#pulsante1").click(function () {
+                    $(".sfondoRosso").toggleClass("sfondoRosso").toggleClass("sfondoGiallo");
+                    // Domanda si applica a tutti i risultati?
+                    // Risposta: SI
+                    // Domanda: al termine funziona ancora il click? (F12 per vedere i cambiamenti)
+                    // Risposta: evento click si ma selettore non trova più elementi .sfondoRosso
+                });
+
+                $("#pulsante2").click(function () {
+                    var colore = $("input[name=colore]:checked").val();
+                    // domanda come si legge questo selettore?
+                    $(".sfondoVerde").css("background-color", colore);
+                });
+            });
+        </script>
+        <style>
+            .sfondoRosso {
+                background-color: red;
+            }
+
+            .sfondoVerde {
+                background-color: green;
+            }
+
+            .sfondoGiallo {
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <div>Corso ITS - jQuery</div>
+        <!-- esercizio parte 1 -->
+        <p class="sfondoRosso">testo su sfondo rosso o giallo</p>
+        <p class="sfondoRosso">testo su sfondo rosso o giallo 2</p>
+        <input id="pulsante1" type="button" value="Cambia sfondo da Classe" />
+
+        <!-- esercizio parte 2 -->
+        <p class="sfondoVerde">resto su sfondo verde o selezionato</p>
+        <input type="radio" name="colore" value="red" checked> Rosso<br>
+        <input type="radio" name="colore" value="blue" > Blu<br>
+        <input type="radio" name="colore" value="yellow" > Giallo<br>
+        <!-- al click su questo button cambia colore al p verde in funzione del radio -->
+        <input id="pulsante2" type="button" value="Cambia sfondo da Selezione" />
+    </body>
+</html>
