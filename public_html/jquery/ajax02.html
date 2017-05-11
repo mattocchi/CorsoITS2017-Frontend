@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Catalogo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>        
+
+        <style>
+            .barrato {
+                // text-decoration: line-through;
+            }
+        </style>
+        <script>
+            "use strict";
+            var prodotti = [];
+            jQuery(function () {
+                $("#add").click(function () {
+                    var testoInserito = $("#nuovo").val();
+                    var categoria = $("#categoria").val();
+                    var prezzo = parseFloat($("#prezzo").val());
+                    if (testoInserito) {
+                        var nuovoProdotto = {descrizione: testoInserito, disponibile: false, categoria: categoria, prezzo: prezzo};
+                        console.log(JSON.stringify(nuovoProdotto));
+                        prodotti.push(nuovoProdotto);
+                        $("#nuovo").val("");
+                        aggiornaTabella();
+                    } else {
+                        alert('inserisci un testo valido');
+                    }
+                });
+                /*
+                 $(".checkCompletaTask").click = function () {
+                 console.log(".checkCompletaTask.click");
+                 }
+                 $(".checkCompletaTask").on( "click", function() {
+                 console.log(".checkCompletaTask.on");
+                 });
+                 */
+
+                // http://api.jquery.com/jquery.getjson/
+                $("#load").click(function () {
+                    console.log("#load");
+                    $.getJSON("ajax02/prodotti.json", function (datiJson) {
+                        prodotti = datiJson;
+                        aggiornaTabella();
+                    });
+                });
+            });
+
+            function aggiornaTabella() {
+                $("#lista>tbody").empty();
+                $.each(prodotti, function (indice, elemento) {
+
+                    // var testo = (elemento.completato) ? '<span class="barrato">' + elemento.descrizione + '</span>' : elemento.descrizione;
+                    var testo = $('<span />');
+                    testo.text(elemento.descrizione);
+                    if (elemento.disponibile) {
+                        testo.addClass("barrato");
+                    }
+
+                    // var checked = (elemento.completato) ? 'checked' : '';
+                    // var checkbox = '<input type="checkbox" onclick="completaTodo(' + posizione + ');" ' + checked + '/>';
+
+                    var checkbox = $('<input />', {type: 'checkbox', 'data-indice': indice});
+                    if (elemento.disponibile)
+                        checkbox.attr('checked', 'checked');
+                    checkbox.addClass("checkCompletaTask");
+
+                    // NOTA CLICK
+                    // checkbox.click attach the handler to elements that already exist
+                    checkbox.on("click", function () {
+                        console.log("checkbox.on.click");
+                        var valoreAttributoDataIndice = $(this).data('indice');
+                        console.log(valoreAttributoDataIndice);
+                        completaTodo(valoreAttributoDataIndice);
+                    });
+
+                    // var nuovaRiga = "<tr><td>" + testo + "</td><td>" + checkbox + "</td></tr>";
+                    var categoria = $("<td>").text(elemento.categoria);
+                    var descrizione = $("<td>").append(testo);
+                    var prezzo = $("<td>").text(elemento.prezzo);
+                    var disponibile = $("<td>").append(checkbox);
+                    var nuovaRiga = $("<tr>").append(categoria).append(descrizione).append(prezzo).append(disponibile);
+                    if (elemento.disponibile) {
+                        nuovaRiga.addClass("success");
+                    }
+                    $("#lista>tbody").append(nuovaRiga);
+
+                });
+            }
+
+            function completaTodo(indice) {
+                prodotti[indice].disponibile = !prodotti[indice].disponibile;
+                aggiornaTabella();
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <h1>Catalogo Prodotti</h1>
+                    <select id="categoria" name="categoria" class="form-control">
+                        <option value="Categoria1">Categoria1</option>
+                        <option value="Categoria2">Categoria2</option>
+                        <option value="Categoria3">Categoria3</option>
+                    </select>
+                    <input id="nuovo" type="text" placeholder="descrizione" class="form-control"/>
+                    <input id="prezzo" type="text" placeholder="prezzo" class="form-control"/>
+
+                    <button id="add" class="btn btn-default">Aggiungi Prodotto a Catalogo</button>
+
+                    <button id="load" class="btn btn-default">Carica Catalogo da Json</button>
+                    <button id="save" class="btn btn-default">Salva Catalogo</button>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-12">    
+                    <table id="lista" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Categoria</th>
+                                <th>Descrizione</th>
+                                <th>Prezzo</th>
+                                <th>Disponibile</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

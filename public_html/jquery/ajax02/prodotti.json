@@ -1,0 +1,14 @@
+[
+	{
+		"descrizione": "prodotto uno",
+		"disponibile": false
+	},
+	{
+		"descrizione": "prodotto due",
+		"disponibile": true
+	},
+	{
+		"descrizione": "prodotto tre",
+		"disponibile": false
+	}
+]
