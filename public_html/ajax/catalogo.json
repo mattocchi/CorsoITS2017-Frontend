@@ -1,0 +1,14 @@
+[
+    {
+        "descrizione": "prodotto1",
+        "categoria": "categoria1",
+        "prezzo": 10,
+        "disponibile": false
+    },
+    {
+        "descrizione": "prodotto2",
+        "categoria": "categoria2",
+        "prezzo": 10.5,
+        "disponibile": true
+    }
+]
